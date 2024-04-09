@@ -10,3 +10,17 @@
   width: 100%;
   color: white;
 }
+
+.containerIcon {
+  display: flex;
+  gap: var(--size-xs);
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.icon {
+  margin-top: var(--size-3xs);
+  width: var(--size-m);
+  height: var(--size-m);
+}
