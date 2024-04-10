@@ -29,9 +29,6 @@ export class HTTPRepository {
   async getHeroList({ search = '' }): Promise<IGetHeroList | undefined> {
     try {
       const response = await this._fetcher({ search });
-
-      console.log(response);
-
       const heroListEntityMapper = FromResponseToHeroEntityListEntityMapper.create();
       const heroListVO = heroListEntityMapper.map({ heroes: response.data.results });
       return { items: heroListVO.serialize() || [], metadata: { count: response.data.count } };
