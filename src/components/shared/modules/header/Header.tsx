@@ -1,10 +1,10 @@
 'use client';
 
 import styles from './Header.module.css';
-import React, { useEffect, useState } from 'react';
-import { HeartIcon } from '@/components';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { HeartIcon } from '@/components';
 import { useFavorites } from '@/context';
 
 export const Header: React.FC = () => {

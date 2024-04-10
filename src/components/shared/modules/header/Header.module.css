@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--size-m) var(--size-2xl);
+  padding: var(--size-m) var(--size-m);
   background-color: black;
   position: fixed;
   top: 0;
@@ -28,4 +28,10 @@
 
 .numberFavs {
   font-size: var(--size-s);
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    padding: var(--size-m) var(--size-2xl);
+  }
 }

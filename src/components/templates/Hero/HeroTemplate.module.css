@@ -1,7 +1,7 @@
 .container {
   width: 100%;
-  padding-left: var(--size-2xl);
-  padding-right: var(--size-xl);
+  padding-left: var(--size-m);
+  padding-right: var(--size-m);
   padding-top: 136px;
   display: flex;
   flex-direction: column;
@@ -15,4 +15,11 @@
 
 .results {
   padding-top: var(--size-m);
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding-left: var(--size-2xl);
+    padding-right: var(--size-xl);
+  }
 }

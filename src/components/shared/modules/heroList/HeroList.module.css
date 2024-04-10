@@ -1,6 +1,15 @@
 .heroList {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  width: 100%;
-  gap: var(--size-m);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: var(--size-xs);
+}
+
+@media screen and (min-width: 768px) {
+  .heroList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    width: 100%;
+    gap: var(--size-m);
+  }
 }
