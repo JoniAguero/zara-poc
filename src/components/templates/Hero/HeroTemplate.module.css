@@ -1,0 +1,18 @@
+.container {
+  width: 100%;
+  padding-left: var(--size-2xl);
+  padding-right: var(--size-xl);
+  padding-top: 136px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-m);
+  padding-bottom: var(--size-4xl);
+}
+
+.containerSearch {
+  margin-bottom: var(--size-l);
+}
+
+.results {
+  padding-top: var(--size-m);
+}

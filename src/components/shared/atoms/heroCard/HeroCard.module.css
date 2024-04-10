@@ -1,5 +1,12 @@
 .container {
   max-width: 190px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.container:hover {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
 }
 
 .separator {
@@ -32,6 +39,7 @@
 }
 
 .icon {
-  width: var(--size-m);
-  height: var(--size-m);
+  width: var(--size-s);
+  height: var(--size-s);
+  margin-bottom: var(--size-xs);
 }

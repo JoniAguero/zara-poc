@@ -15,7 +15,7 @@ export const Header: React.FC = () => {
           <div className={styles.icon}>
             <HeartIcon />
           </div>
-          <div>3</div>
+          <div className={styles.numberFavs}>3</div>
         </div>
       </Link>
     </header>

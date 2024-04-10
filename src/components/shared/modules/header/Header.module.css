@@ -14,7 +14,7 @@
 
 .containerIcon {
   display: flex;
-  gap: var(--size-xs);
+  gap: var(--size-2xs);
   align-items: center;
   text-align: center;
   justify-content: center;
@@ -24,4 +24,8 @@
   margin-top: var(--size-3xs);
   width: var(--size-m);
   height: var(--size-m);
+}
+
+.numberFavs {
+  font-size: var(--size-s);
 }

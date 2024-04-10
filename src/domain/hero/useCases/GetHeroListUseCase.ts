@@ -12,11 +12,13 @@ export class GetHeroListUseCase {
     this._repository = repository;
   }
 
-  async execute() {
-    const heroListVO = await this._repository.getHeroList({ offset: 0, search: '', rowsPerPage: 10 });
-
+  async execute({ search }: { search: string }) {
+    const response = await this._repository.getHeroList({ search });
+    const items = response?.items?.heroEntityList || [];
+    const count = response?.metadata?.count;
     return {
-      items: heroListVO,
+      items,
+      count,
     };
   }
 }

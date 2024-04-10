@@ -1,12 +1,21 @@
 import { FromResponseToHeroEntityListEntityMapper } from '../mappers/FromResponseToHeroEntityListEntityMapper';
 
 import { PublicFetcher } from '../../fetchers';
+import { HeroEntity } from '../models/HeroEntity';
 // import { UserEntity } from '../models/HeroEntity';
+import { metadata } from '../../../app/layout';
+
+interface IGetHeroList {
+  items: {
+    heroEntityList: Array<HeroEntity>;
+  };
+  metadata: {
+    count: number;
+  };
+}
 
 export class HTTPRepository {
   private _fetcher: any;
-  private _url =
-    'http://gateway.marvel.com/v1/public/characters?ts=1&limit=50&apikey=efe6f598233b28dd13d293fe099c2115&hash=a201c9d6c88e3047527968cb82fd6bd8';
 
   static create() {
     const fetcher = PublicFetcher;
@@ -17,20 +26,17 @@ export class HTTPRepository {
     this._fetcher = fetcher;
   }
 
-  async getHeroList({ offset, search, rowsPerPage }: { offset: number; search: string; rowsPerPage: number }) {
+  async getHeroList({ search = '' }): Promise<IGetHeroList | undefined> {
     try {
-      const response = await this._fetcher(this._url, {
-        offset,
-        search,
-        rowsPerPage,
-      });
+      const response = await this._fetcher({ search });
+
+      console.log(response);
 
       const heroListEntityMapper = FromResponseToHeroEntityListEntityMapper.create();
       const heroListVO = heroListEntityMapper.map({ heroes: response.data.results });
-
-      return heroListVO.serialize() || [];
+      return { items: heroListVO.serialize() || [], metadata: { count: response.data.count } };
     } catch (error) {
-      return error;
+      console.error(error);
     }
   }
 
