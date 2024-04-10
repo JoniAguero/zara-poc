@@ -1,19 +1,19 @@
-// import { HTTPRepository } from '../repositories';
+import { HTTPRepository } from '../repositories';
 
-// export class GetUserDetailUseCase {
-//   _repository;
+export class GetHeroDetailUseCase {
+  _repository;
 
-//   static create() {
-//     const repository = HTTPRepository.create();
-//     return new GetUserDetailUseCase({ repository });
-//   }
+  static create() {
+    const repository = HTTPRepository.create();
+    return new GetHeroDetailUseCase({ repository });
+  }
 
-//   constructor({ repository }: { repository: HTTPRepository }) {
-//     this._repository = repository;
-//   }
+  constructor({ repository }: { repository: HTTPRepository }) {
+    this._repository = repository;
+  }
 
-//   async execute({ userId }: { userId: string }) {
-//     const userEntity = await this._repository.getHeroList({ userId });
-//     return userEntity.serialize();
-//   }
-// }
+  async execute({ id }: { id: number }) {
+    const response = await this._repository.getHeroDetail({ id });
+    return response?.serialize();
+  }
+}

@@ -1,5 +1,5 @@
 import { HeroTemplate } from '@/components';
 
-export default function Home() {
+export default function ListHero() {
   return <HeroTemplate />;
 }

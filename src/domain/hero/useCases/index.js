@@ -1,2 +1,2 @@
 export * from './GetHeroListUseCase';
-// export * from './GetHeroDetailUseCase';
+export * from './GetHeroDetailUseCase';

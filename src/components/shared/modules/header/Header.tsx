@@ -12,7 +12,7 @@ export const Header: React.FC = () => {
 
   return (
     <header className={styles.header}>
-      <Link href="/">
+      <Link href="/heroes">
         <Image src="/images/marvel_logo.png" alt="logo" width={130} height={52} />
       </Link>
       <Link href="/about">

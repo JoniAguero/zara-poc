@@ -1,12 +1,9 @@
-import MD5 from 'crypto-js/md5';
+import { generateHash } from '@/utils/generateHash';
 
-function generateHash({ timestamp, privateKey, publicKey }) {
-  const hash = MD5(timestamp + privateKey + publicKey).toString();
-  return hash;
-}
+export const PublicFetcher = async ({ search, id }) => {
+  console.log('PublicFetcher - search:', search);
+  console.log('PublicFetcher - id:', id);
 
-export const PublicFetcher = async ({ search }) => {
-  let url;
   const timestamp = new Date().getTime().toString();
 
   const hash = generateHash({
@@ -15,13 +12,18 @@ export const PublicFetcher = async ({ search }) => {
     privateKey: process.env.NEXT_PUBLIC_PRIVATEKEY_MARVEL,
   });
 
-  const baseUrl = 'https://gateway.marvel.com/v1/public/characters';
-  const query = `?limit=50&ts=${timestamp}&apikey=${process.env.NEXT_PUBLIC_APIKEY_MARVEL}&hash=${hash}`;
+  let url;
+  let baseUrl = 'https://gateway.marvel.com/v1/public/characters';
+  let query = `?limit=50&ts=${timestamp}&apikey=${process.env.NEXT_PUBLIC_APIKEY_MARVEL}&hash=${hash}`;
+
+  if (id) {
+    baseUrl = baseUrl + `/${id}`;
+  }
 
   url = baseUrl + query;
 
   if (search) {
-    url = url + `&nameStartsWith=${encodeURIComponent(search)}`;
+    url = url + `&name=${encodeURIComponent(search)}`;
   }
 
   try {

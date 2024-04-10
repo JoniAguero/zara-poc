@@ -2,14 +2,13 @@ import { FromResponseToHeroEntityListEntityMapper } from '../mappers/FromRespons
 
 import { PublicFetcher } from '../../fetchers';
 import { HeroEntity } from '../models/HeroEntity';
-// import { UserEntity } from '../models/HeroEntity';
-import { metadata } from '../../../app/layout';
+import { HeroEntityListValueObject } from '../models/HeroEntityListValueObject';
 
 interface IGetHeroList {
   items: {
     heroEntityList: Array<HeroEntity>;
   };
-  metadata: {
+  metadata?: {
     count: number;
   };
 }
@@ -37,47 +36,16 @@ export class HTTPRepository {
     }
   }
 
-  // async getUserDetail({ userId }) {
-  //   try {
-  //     const _id = userId;
-  //     const { getUsers } = await this._fetcher(GET_ADMIN_USER_LIST, {
-  //       fields: ['_id'],
-  //       search: _id,
-  //     });
+  async getHeroDetail({ id }: { id: number }): Promise<HeroEntity | undefined> {
+    try {
+      const response = await this._fetcher({ id });
 
-  //     const {
-  //       address,
-  //       createdAt,
-  //       email,
-  //       emailVerified,
-  //       externalReferralCode,
-  //       image,
-  //       modifiedAt,
-  //       name,
-  //       referralCode,
-  //       roles,
-  //       surname,
-  //       terms,
-  //       _id: id,
-  //     } = getUsers.items[0];
+      const heroListEntityMapper = FromResponseToHeroEntityListEntityMapper.create();
+      const heroVO = heroListEntityMapper.map({ heroes: response.data.results });
 
-  //     return UserEntity.create({
-  //       address,
-  //       createdAt,
-  //       email,
-  //       emailVerified,
-  //       externalReferralCode,
-  //       image,
-  //       modifiedAt,
-  //       name,
-  //       referralCode,
-  //       roles,
-  //       surname,
-  //       terms,
-  //       id,
-  //     });
-  //   } catch (error) {
-  //     return error;
-  //   }
-  // }
+      return heroVO.heroEntityList()[0];
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }

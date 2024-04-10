@@ -7,12 +7,13 @@ interface HeroCardProps {
   image: string;
   name: string;
   isFavorite?: boolean;
+  handleClick?: () => void;
   toggleFavorite: () => void;
 }
 
-export const HeroCard: React.FC<HeroCardProps> = ({ image, name, isFavorite, toggleFavorite }) => {
+export const HeroCard: React.FC<HeroCardProps> = ({ image, name, isFavorite, toggleFavorite, handleClick }) => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={handleClick}>
       <Image src={image} alt={name} width={190} height={190} />
       <div className={styles.separator}></div>
       <div className={styles.containerName}>
