@@ -1,0 +1,9 @@
+.heroList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  margin-top: 100px;
+  gap: var(--size-m);
+  padding-left: var(--size-2xl);
+  padding-right: var(--size-xl);
+  width: 100%;
+}

@@ -10,16 +10,14 @@ export class FromResponseToHeroEntityListEntityMapper {
     const { heroes } = response;
 
     const heroList: Array<HeroEntity> | undefined = heroes?.map((hero: any) => {
-      const { id, name, description, modified, resourceURI, urls, thumbnail } = hero;
+      const { id, name, thumbnail } = hero;
+
+      const image = `${thumbnail.path}.${thumbnail.extension}`;
 
       const heroEntity: HeroEntity = HeroEntity.create({
         id,
-        name,
-        description,
-        modified,
-        resourceURI,
-        urls,
-        thumbnail,
+        name: name.toUpperCase(),
+        image,
       });
 
       return heroEntity;

@@ -6,7 +6,7 @@ import { PublicFetcher } from '../../fetchers';
 export class HTTPRepository {
   private _fetcher: any;
   private _url =
-    'http://gateway.marvel.com/v1/public/characters?ts=1&apikey=efe6f598233b28dd13d293fe099c2115&hash=a201c9d6c88e3047527968cb82fd6bd8';
+    'http://gateway.marvel.com/v1/public/characters?ts=1&limit=50&apikey=efe6f598233b28dd13d293fe099c2115&hash=a201c9d6c88e3047527968cb82fd6bd8';
 
   static create() {
     const fetcher = PublicFetcher;
@@ -18,16 +18,12 @@ export class HTTPRepository {
   }
 
   async getHeroList({ offset, search, rowsPerPage }: { offset: number; search: string; rowsPerPage: number }) {
-    console.log(this._url);
-
     try {
       const response = await this._fetcher(this._url, {
         offset,
         search,
         rowsPerPage,
       });
-
-      console.log(response);
 
       const heroListEntityMapper = FromResponseToHeroEntityListEntityMapper.create();
       const heroListVO = heroListEntityMapper.map({ heroes: response.data.results });
