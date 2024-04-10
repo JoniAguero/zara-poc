@@ -1,16 +1,16 @@
-import styles from './page.module.css';
+'use client';
 
-export default function Home() {
-  const heroes = ['Iron Man', 'Spider-Man', 'Thor', 'Hulk', 'Black Widow'];
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
-  return (
-    <div className={styles.heroList}>
-      <h1>Marvel Heroes</h1>
-      <ul>
-        {heroes.map((hero, index) => (
-          <li key={index}>{hero}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+const Page = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace('/heroes');
+  }, [router]);
+
+  return null;
+};
+
+export default Page;
