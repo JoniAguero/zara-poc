@@ -1,9 +1,6 @@
 import { generateHash } from '@/utils/generateHash';
 
-export const PublicFetcher = async ({ search, id }) => {
-  console.log('PublicFetcher - search:', search);
-  console.log('PublicFetcher - id:', id);
-
+export const PublicFetcher = async ({ baseUrl }) => {
   const timestamp = new Date().getTime().toString();
 
   const hash = generateHash({
@@ -12,19 +9,9 @@ export const PublicFetcher = async ({ search, id }) => {
     privateKey: process.env.NEXT_PUBLIC_PRIVATEKEY_MARVEL,
   });
 
-  let url;
-  let baseUrl = 'https://gateway.marvel.com/v1/public/characters';
-  let query = `?limit=50&ts=${timestamp}&apikey=${process.env.NEXT_PUBLIC_APIKEY_MARVEL}&hash=${hash}`;
+  let queryAuth = `?limit=50&ts=${timestamp}&apikey=${process.env.NEXT_PUBLIC_APIKEY_MARVEL}&hash=${hash}`;
 
-  if (id) {
-    baseUrl = baseUrl + `/${id}`;
-  }
-
-  url = baseUrl + query;
-
-  if (search) {
-    url = url + `&name=${encodeURIComponent(search)}`;
-  }
+  const url = baseUrl + queryAuth;
 
   try {
     const res = await fetch(url);

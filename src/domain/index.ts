@@ -1,4 +1,5 @@
 import * as heroUseCases from './hero/useCases';
+import * as comicUseCases from './comic/useCases';
 
 interface UseCases {
   [key: string]: any;
@@ -6,6 +7,7 @@ interface UseCases {
 
 const useCases: UseCases = {
   ...heroUseCases,
+  ...comicUseCases,
 };
 
 export class DomainApp {

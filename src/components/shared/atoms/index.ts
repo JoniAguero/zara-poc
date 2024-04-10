@@ -1,3 +1,4 @@
-export * from './heroCard/HeroCard';
-export * from './searchInput';
+export * from './comicCard';
+export * from './heroCard';
 export * from './loader';
+export * from './searchInput';

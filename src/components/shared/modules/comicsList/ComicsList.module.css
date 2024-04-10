@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--size-m);
+  padding-bottom: var(--size-xl);
+}
+
+.title {
+  margin-bottom: var(--size-m);
+  margin-left: var(--size-xl);
+}
+
+.comicsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: var(--size-xs);
+  padding: 0 var(--size-xs);
+}
+
+@media screen and (min-width: 768px) {
+  .comicsList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    width: 100%;
+    gap: var(--size-m);
+    padding: 0;
+  }
+  .title {
+    margin-left: 0;
+  }
+}
