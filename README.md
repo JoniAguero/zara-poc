@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Aplicación Marvel
 
-## Getting Started
+## Descripción
 
-First, run the development server:
+La Aplicación Marvel es una plataforma donde se muestran los héroes de Marvel utilizando la API proporcionada por Marvel Developer Portal. Esta aplicación permite a los usuarios explorar una amplia gama de personajes icónicos del universo Marvel, obteniendo información detallada sobre cada héroe, incluyendo su biografía, poderes, y más.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Ejecución de la Aplicación
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Para ejecutar la aplicación Marvel en tu entorno local, sigue estos pasos:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clona este repositorio a tu máquina local utilizando el siguiente comando:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+git clone https://github.com/tu-usuario/aplicacion-marvel.git
 
-## Learn More
+2. Accede al directorio del proyecto:
 
-To learn more about Next.js, take a look at the following resources:
+cd aplicacion-marvel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Instala las dependencias del proyecto utilizando npm o yarn:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+npm install
 
-## Deploy on Vercel
+4. Inicia la aplicación:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+npm start
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+5. La aplicación estará disponible en tu navegador en la dirección [http://localhost:3000](http://localhost:3000).
+
+## Arquitectura y Estructura
+
+La Aplicación Marvel está construida utilizando React.js como biblioteca de interfaz de usuario y consume la API proporcionada por Marvel Developer Portal para obtener información sobre los héroes de Marvel. La aplicación sigue una arquitectura de componentes, donde cada componente está diseñado para manejar una parte específica de la interfaz de usuario. Además, se utiliza CSS para el diseño y estilo de la aplicación, y se pueden emplear herramientas adicionales como Redux para la gestión del estado global, según las necesidades del proyecto.
+
+## Características Principales
+
+- Exploración de una amplia variedad de héroes del universo Marvel.
+- Visualización detallada de la información de cada héroe, incluyendo biografía, poderes, afiliaciones y más.
+- Interfaz de usuario intuitiva y fácil de usar.
+- Integración con la API de Marvel Developer Portal para obtener datos en tiempo real sobre los héroes.
+
+## Contribución
+
+¡Contribuciones son bienvenidas! Si deseas contribuir al proyecto, sigue estos pasos:
+
+1. Haz un fork del repositorio.
+2. Crea una rama para tu nueva funcionalidad (`git checkout -b feature/nueva-funcionalidad`).
+3. Realiza tus cambios y haz commit de ellos (`git commit -am 'Añade nueva funcionalidad'`).
+4. Haz push de la rama (`git push origin feature/nueva-funcionalidad`).
+5. Crea un nuevo Pull Request.
+
+## Licencia
+
+[Información sobre la licencia del proyecto, si aplica]
+
+## Contacto
+
+Para más información, contacta al equipo de desarrollo en [correo electrónico de contacto].
+
+## Agradecimientos
+
+La Aplicación Marvel agradece a Marvel Developer Portal por proporcionar una API pública que permite acceder a información sobre los héroes de Marvel.
+
+## Estado del Proyecto
+
+Actualmente en desarrollo.
+
+## Soporte
+
+Para obtener soporte, por favor abre un issue en el repositorio del proyecto: [enlace al repositorio](https://github.com/tu-usuario/aplicacion-marvel/issues)
