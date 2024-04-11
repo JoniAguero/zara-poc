@@ -10,19 +10,19 @@ Para ejecutar la aplicación Marvel en tu entorno local, sigue estos pasos:
 
 1. Clona este repositorio a tu máquina local utilizando el siguiente comando:
 
-git clone https://github.com/tu-usuario/aplicacion-marvel.git
+- git clone https://github.com/tu-usuario/aplicacion-marvel.git
 
 2. Accede al directorio del proyecto:
 
-cd aplicacion-marvel
+- cd aplicacion-marvel
 
 3. Instala las dependencias del proyecto utilizando npm o yarn:
 
-npm install
+- npm install
 
 4. Inicia la aplicación:
 
-npm start
+- npm start
 
 5. La aplicación estará disponible en tu navegador en la dirección [http://localhost:3000](http://localhost:3000).
 
