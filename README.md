@@ -10,11 +10,11 @@ Para ejecutar la aplicación Marvel en tu entorno local, sigue estos pasos:
 
 1. Clona este repositorio a tu máquina local utilizando el siguiente comando:
 
-- git clone https://github.com/tu-usuario/aplicacion-marvel.git
+- git clone https://github.com/JoniAguero/zara-poc.git
 
 2. Accede al directorio del proyecto:
 
-- cd aplicacion-marvel
+- cd zara-poc
 
 3. Instala las dependencias del proyecto utilizando npm o yarn:
 
