@@ -1,10 +1,16 @@
 'use client';
 
 import { HeroTemplate } from '@/components';
+import { useEffect, useState } from 'react';
 
 export default function ListHero() {
-  const data = JSON.parse(localStorage.getItem('favorites') || '[]');
-  const heroes = data.map((item: any) => item.hero);
+  const [heroes, setHeroes] = useState([]);
 
-  return <HeroTemplate heroes={heroes} showSearch={false} />;
+  useEffect(() => {
+    const data = JSON.parse(window.localStorage.getItem('favorites') || '[]');
+    const heroes = data.map((item: any) => item.hero);
+    setHeroes(heroes);
+  }, []);
+
+  return <>{heroes && <HeroTemplate heroes={heroes} showSearch={false} />}</>;
 }

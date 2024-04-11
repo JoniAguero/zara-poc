@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './HeroTemplate.module.css';
-import React from 'react';
+import React, { use, useEffect } from 'react';
 import { useState } from 'react';
 import { useDomain } from '@/context';
 import { HeroList, Loader, SearchInput } from '@/components';
@@ -26,6 +26,10 @@ export const HeroTemplate: React.FC<HeroListProps> = ({ heroes, count = 0, showS
   const { domain } = useDomain();
   const [heroItems, setHeroItems] = useState<any[]>(heroes);
   const [countItems, setCountItems] = useState<number>(count);
+
+  useEffect(() => {
+    setHeroItems(heroes);
+  }, [heroes]);
 
   const fetchHeroItems = async ({ search = '' }: { search: string }) => {
     try {
