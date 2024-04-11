@@ -27,7 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/pages/heroes/page.tsx",
+    "src/pages/heroes/index.tsx",
     "src/components/index.js",
     "src/utils/generateHash.js"
   ],

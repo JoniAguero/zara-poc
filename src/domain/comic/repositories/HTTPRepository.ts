@@ -25,7 +25,7 @@ export class HTTPRepository {
   }
 
   async getComicList({ id }: { id: number }): Promise<IGetComicList | undefined> {
-    let url = `https://gateway.marvel.com/v1/public/characters/${id}/comics`;
+    let url = `https://gateway.marvel.com/v1/public/characters/${id}/comics?`;
 
     try {
       const response = await this._fetcher({ baseUrl: url });

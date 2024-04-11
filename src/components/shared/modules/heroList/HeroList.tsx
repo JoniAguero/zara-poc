@@ -2,19 +2,9 @@
 
 import styles from './HeroList.module.css';
 import React from 'react';
-import { HeroCard } from '@/components';
+import { HeroCard, HeroListProps } from '@/components';
 import { useFavorites } from '@/context';
 import { useRouter } from 'next/navigation';
-
-interface Hero {
-  id: number;
-  name: string;
-  image: string;
-}
-
-interface HeroListProps {
-  heroes: Hero[];
-}
 
 export const HeroList: React.FC<HeroListProps> = ({ heroes }) => {
   const router = useRouter();
@@ -35,6 +25,7 @@ export const HeroList: React.FC<HeroListProps> = ({ heroes }) => {
           key={hero.id}
           name={hero.name}
           image={hero.image}
+          blurImage={hero.blurImage}
           handleClick={() => router.push(`heroes/${hero.id}`)}
           isFavorite={favorites.includes(hero.id)}
           toggleFavorite={() => handleToggleFavorite(hero.id)}

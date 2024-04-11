@@ -9,6 +9,7 @@ interface Comic {
   title: string;
   year: string;
   image: string;
+  blurImage: string;
 }
 
 interface ComicsListProps {
@@ -21,7 +22,13 @@ export const ComicsList: React.FC<ComicsListProps> = ({ comics }: ComicsListProp
       <h2 className={styles.title}>Comics</h2>
       <div className={styles.comicsList}>
         {comics?.map((comic: Comic) => (
-          <ComicCard key={comic.id} title={comic.title} image={comic.image} year={comic.year}></ComicCard>
+          <ComicCard
+            key={comic.id}
+            title={comic.title}
+            image={comic.image}
+            blurImage={comic.blurImage}
+            year={comic.year}
+          ></ComicCard>
         ))}
       </div>
     </div>

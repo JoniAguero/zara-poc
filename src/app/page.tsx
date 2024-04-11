@@ -1,16 +1,26 @@
-'use client';
+import { HeroTemplate } from '@/components';
+import { HeroEntity } from '@/domain/hero/models/HeroEntity';
+import { dynamicBlurDataUrl } from '@/utils';
 
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+async function getData() {
+  const DomainApp = require('@/domain').DomainApp.create();
 
-const Page = () => {
-  const router = useRouter();
+  const { items, count } = await DomainApp.getHeroListUseCase.execute({ search: '' });
 
-  useEffect(() => {
-    router.replace('/heroes');
-  }, [router]);
+  const itemswithImageBlur = await Promise.all(
+    items.map(async (hero: HeroEntity) => ({
+      ...hero,
+      blurImage: await dynamicBlurDataUrl(hero.image),
+    }))
+  );
 
-  return null;
-};
+  return {
+    items: itemswithImageBlur,
+    count,
+  };
+}
 
-export default Page;
+export default async function ListHero() {
+  const { items, count } = await getData();
+  return <HeroTemplate heroes={items} count={count} />;
+}

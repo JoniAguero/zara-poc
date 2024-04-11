@@ -9,16 +9,31 @@ interface HeroDetailProps {
   name: string;
   description: string;
   image: string;
+  blurImage: string;
   isFavorite?: boolean;
   toggleFavorite: () => void;
 }
 
-export const HeroDetail: React.FC<HeroDetailProps> = ({ name, description, image, isFavorite, toggleFavorite }) => {
+export const HeroDetail: React.FC<HeroDetailProps> = ({
+  name,
+  description,
+  image,
+  blurImage,
+  isFavorite,
+  toggleFavorite,
+}) => {
   return (
     <div className={styles.container}>
       <div className={styles.containerImage}>
         <div className={styles.image}>
-          <Image src={image} alt={name} fill={true} />
+          <Image
+            src={image}
+            alt={name}
+            fill={true}
+            placeholder="blur"
+            blurDataURL={blurImage}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
         </div>
         <div className={styles.containerDescription}>
           <div className={styles.containerName}>

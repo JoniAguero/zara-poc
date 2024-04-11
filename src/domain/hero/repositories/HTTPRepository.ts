@@ -25,10 +25,12 @@ export class HTTPRepository {
   }
 
   async getHeroList({ search = '' }): Promise<IGetHeroList | undefined> {
-    let url = 'https://gateway.marvel.com/v1/public/characters';
+    let url = 'https://gateway.marvel.com/v1/public/characters?';
 
     if (search) {
-      url = url + `?name=${encodeURIComponent(search)}`;
+      url = url + `nameStartsWith=${encodeURIComponent(search)}&`;
+    } else {
+      url = url + 'limit=50&';
     }
 
     try {
@@ -42,7 +44,7 @@ export class HTTPRepository {
   }
 
   async getHeroDetail({ id }: { id: number }): Promise<HeroEntity | undefined> {
-    let baseUrl = `https://gateway.marvel.com/v1/public/characters/${id}`;
+    let baseUrl = `https://gateway.marvel.com/v1/public/characters/${id}?`;
 
     try {
       const response = await this._fetcher({ baseUrl });

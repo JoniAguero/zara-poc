@@ -9,7 +9,7 @@ export const PublicFetcher = async ({ baseUrl }) => {
     privateKey: process.env.NEXT_PUBLIC_PRIVATEKEY_MARVEL,
   });
 
-  let queryAuth = `?limit=50&ts=${timestamp}&apikey=${process.env.NEXT_PUBLIC_APIKEY_MARVEL}&hash=${hash}`;
+  let queryAuth = `ts=${timestamp}&apikey=${process.env.NEXT_PUBLIC_APIKEY_MARVEL}&hash=${hash}`;
 
   const url = baseUrl + queryAuth;
 
