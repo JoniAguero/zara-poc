@@ -24,7 +24,31 @@ Para ejecutar la aplicación Marvel en tu entorno local, sigue estos pasos:
 
 - npm start
 
-5. La aplicación estará disponible en tu navegador en la dirección [http://localhost:3000](http://localhost:3000).
+5. La aplicación estará disponible en tu navegador en la dirección [http://localhost:3000](http://localhost:3000)
+
+## !! AUTHENTICATION
+
+## Obtención de las API Keys de Marvel
+
+Para utilizar la API de Marvel en esta aplicación, necesitarás obtener las API keys proporcionadas por Marvel Developer Portal. Sigue estos pasos para obtener tus propias API keys:
+
+1. Visita el [Marvel Developer Portal](https://developer.marvel.com/) y crea una cuenta o inicia sesión si ya tienes una.
+
+2. Después de iniciar sesión, ve a la sección "Get A Key" en el menú de la izquierda.
+
+3. Haz clic en el botón "Get Started" para crear un nuevo perfil de desarrollador.
+
+4. Completa el formulario de registro con la información requerida y acepta los términos y condiciones.
+
+5. Una vez que hayas completado el registro, recibirás un correo electrónico de confirmación. Haz clic en el enlace de confirmación para verificar tu dirección de correo electrónico.
+
+6. Después de confirmar tu correo electrónico, podrás acceder a tu panel de desarrollador en el portal de Marvel.
+
+7. En tu panel de desarrollador, encontrarás tus API keys en la sección "My Applications". Verás dos claves: una clave pública y una clave privada. Estas son tus API keys que necesitarás utilizar para acceder a la API de Marvel desde tu aplicación.
+
+8. Copia y guarda tus API keys en un lugar seguro. No compartas estas claves públicamente para evitar su uso indebido.
+
+Una vez que hayas obtenido tus API keys, puedes configurar tu aplicación para utilizarlas y comenzar a acceder a la API de Marvel para obtener información sobre los héroes, cómics y más.
 
 ## Arquitectura y Estructura
 
