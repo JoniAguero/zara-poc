@@ -19,9 +19,10 @@ export interface Hero {
 export interface HeroListProps {
   heroes: Hero[];
   count?: number;
+  showSearch?: boolean;
 }
 
-export const HeroTemplate: React.FC<HeroListProps> = ({ heroes, count = 0 }) => {
+export const HeroTemplate: React.FC<HeroListProps> = ({ heroes, count = 0, showSearch = true }) => {
   const { domain } = useDomain();
   const [heroItems, setHeroItems] = useState<any[]>(heroes);
   const [countItems, setCountItems] = useState<number>(count);
@@ -50,11 +51,13 @@ export const HeroTemplate: React.FC<HeroListProps> = ({ heroes, count = 0 }) => 
 
   return (
     <div className={styles.container}>
-      <div className={styles.containerSearch}>
-        <SearchInput onSearch={handleSearch} />
-        <div className={styles.results}>{countItems} RESULTS</div>
-      </div>
-      {!heroes || heroes.length === 0 ? (
+      {showSearch && (
+        <div className={styles.containerSearch}>
+          <SearchInput onSearch={handleSearch} />
+          <div className={styles.results}>{countItems} RESULTS</div>
+        </div>
+      )}
+      {!heroItems || heroItems.length === 0 ? (
         <div>
           <Loader />
         </div>

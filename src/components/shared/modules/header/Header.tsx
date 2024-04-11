@@ -15,7 +15,7 @@ export const Header: React.FC = () => {
       <Link href="/">
         <Image src="/images/marvel_logo.png" alt="logo" width={130} height={52} priority />
       </Link>
-      <Link href="/about">
+      <Link href="/favorites">
         <div className={styles.containerIcon}>
           <div className={styles.icon}>
             <HeartIcon />
