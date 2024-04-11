@@ -2,21 +2,8 @@
 
 import styles from './DetailHeroTemplate.module.css';
 import React from 'react';
-import { HeroDetail, ComicsList, Loader } from '@/components';
+import { HeroDetail, ComicsList, Loader, Hero } from '@/components';
 import { useFavorites } from '@/context';
-
-interface DetailHeroTemplateProps {
-  id: number;
-  hero: HeroDetailProps;
-  comics: Comic[];
-}
-
-interface HeroDetailProps {
-  name: string;
-  description: string;
-  image: string;
-  blurImage: string;
-}
 
 interface Comic {
   id: number;
@@ -25,14 +12,21 @@ interface Comic {
   image: string;
   blurImage: string;
 }
+
+interface DetailHeroTemplateProps {
+  id: number;
+  hero: Hero;
+  comics: Comic[];
+}
+
 export const DetailHeroTemplate: React.FC<DetailHeroTemplateProps> = ({ id, hero, comics }) => {
   const { favorites, addFavorite, removeFavorite } = useFavorites();
 
-  const handleToggleFavorite = (id: number) => {
-    if (favorites.includes(id)) {
-      removeFavorite(id);
+  const handleToggleFavorite = (hero: Hero) => {
+    if (favorites.some((favorite) => favorite.id === hero.id.toString())) {
+      removeFavorite(hero.id.toString());
     } else {
-      addFavorite(id);
+      addFavorite({ id: hero.id.toString(), hero });
     }
   };
 
@@ -52,8 +46,8 @@ export const DetailHeroTemplate: React.FC<DetailHeroTemplateProps> = ({ id, hero
           description={hero?.description}
           image={hero?.image}
           blurImage={hero?.blurImage}
-          isFavorite={favorites.includes(id)}
-          toggleFavorite={() => handleToggleFavorite(id)}
+          isFavorite={favorites.some((favorite) => favorite.id === hero.id.toString())}
+          toggleFavorite={() => handleToggleFavorite(hero)}
         />
       )}
       {comics && (

@@ -2,7 +2,7 @@
 
 import styles from './HeroTemplate.module.css';
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDomain } from '@/context';
 import { HeroList, Loader, SearchInput } from '@/components';
 import { HeroEntity } from '@/domain/hero/models/HeroEntity';
@@ -11,6 +11,7 @@ import { dynamicBlurDataUrl } from '@/utils';
 export interface Hero {
   id: number;
   name: string;
+  description: string;
   image: string;
   blurImage: string;
 }

@@ -1,8 +1,7 @@
 'use client';
-
 import styles from './HeroList.module.css';
 import React from 'react';
-import { HeroCard, HeroListProps } from '@/components';
+import { Hero, HeroCard, HeroListProps } from '@/components';
 import { useFavorites } from '@/context';
 import { useRouter } from 'next/navigation';
 
@@ -10,11 +9,11 @@ export const HeroList: React.FC<HeroListProps> = ({ heroes }) => {
   const router = useRouter();
   const { favorites, addFavorite, removeFavorite } = useFavorites();
 
-  const handleToggleFavorite = (id: number) => {
-    if (favorites.includes(id)) {
-      removeFavorite(id);
+  const handleToggleFavorite = (hero: Hero) => {
+    if (favorites.some((favorite) => favorite.id === hero.id.toString())) {
+      removeFavorite(hero.id.toString());
     } else {
-      addFavorite(id);
+      addFavorite({ id: hero.id.toString(), hero });
     }
   };
 
@@ -27,8 +26,8 @@ export const HeroList: React.FC<HeroListProps> = ({ heroes }) => {
           image={hero.image}
           blurImage={hero.blurImage}
           handleClick={() => router.push(`heroes/${hero.id}`)}
-          isFavorite={favorites.includes(hero.id)}
-          toggleFavorite={() => handleToggleFavorite(hero.id)}
+          isFavorite={favorites.some((favorite) => favorite.id === hero.id.toString())}
+          toggleFavorite={() => handleToggleFavorite(hero)}
         ></HeroCard>
       ))}
     </div>

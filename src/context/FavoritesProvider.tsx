@@ -1,11 +1,12 @@
 'use client';
 
+import { Hero } from '@/components';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface FavoritesContextType {
-  favorites: number[];
-  addFavorite: (id: number) => void;
-  removeFavorite: (id: number) => void;
+  favorites: { id: string; hero: Hero }[];
+  addFavorite: ({ id, hero }: { id: string; hero: Hero }) => void;
+  removeFavorite: (id: string) => void;
 }
 
 const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
@@ -16,24 +17,30 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     setFavorites(storedFavorites);
   }, []);
 
-  const [favorites, setFavorites] = useState<number[]>([]);
+  const [favorites, setFavorites] = useState<{ id: string; hero: Hero }[]>([]);
 
-  const addFavorite = (id: number) => {
-    setFavorites([...favorites, id]);
-    toggleFavoriteStorage(id);
+  const addFavorite = ({ id, hero }: { id: string; hero: Hero }) => {
+    const newFavorite = { id, hero };
+    setFavorites([...favorites, newFavorite]);
+    updateLocalStorage([...favorites, newFavorite]);
   };
 
-  const removeFavorite = (id: number) => {
-    setFavorites(favorites.filter((favId) => favId !== id));
-    toggleFavoriteStorage(id);
-  };
-
-  const toggleFavoriteStorage = (id: number) => {
-    const updatedFavorites = favorites.includes(id) ? favorites.filter((favId) => favId !== id) : [...favorites, id];
-
+  const removeFavorite = (id: string) => {
+    const updatedFavorites = favorites.filter((fav) => fav.id !== id);
     setFavorites(updatedFavorites);
+    updateLocalStorage(updatedFavorites);
+  };
+
+  const updateLocalStorage = (updatedFavorites: { id: string; hero: Hero }[]) => {
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   };
+
+  // const toggleFavoriteStorage = (id: string) => {
+  //   const updatedFavorites = favorites.includes(id) ? favorites.filter((favId) => favId !== id) : [...favorites, id];
+
+  //   setFavorites(updatedFavorites);
+  //   localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+  // };
 
   return (
     <FavoritesContext.Provider value={{ favorites, addFavorite, removeFavorite }}>{children}</FavoritesContext.Provider>
