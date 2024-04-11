@@ -26,8 +26,6 @@ Para ejecutar la aplicación Marvel en tu entorno local, sigue estos pasos:
 
 5. La aplicación estará disponible en tu navegador en la dirección [http://localhost:3000](http://localhost:3000)
 
-## !! AUTHENTICATION
-
 ## Obtención de las API Keys de Marvel
 
 Para utilizar la API de Marvel en esta aplicación, necesitarás obtener las API keys proporcionadas por Marvel Developer Portal. Sigue estos pasos para obtener tus propias API keys:
