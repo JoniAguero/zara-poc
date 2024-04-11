@@ -28,7 +28,13 @@ npm start
 
 ## Arquitectura y Estructura
 
-La Aplicación Marvel está construida utilizando React.js como biblioteca de interfaz de usuario y consume la API proporcionada por Marvel Developer Portal para obtener información sobre los héroes de Marvel. La aplicación sigue una arquitectura de componentes, donde cada componente está diseñado para manejar una parte específica de la interfaz de usuario. Además, se utiliza CSS para el diseño y estilo de la aplicación, y se pueden emplear herramientas adicionales como Redux para la gestión del estado global, según las necesidades del proyecto.
+La Aplicación Marvel está construida utilizando Next.js como biblioteca de interfaz de usuario y consume la API proporcionada por Marvel Developer Portal para obtener información sobre los héroes de Marvel. La aplicación sigue una arquitectura hexagonal, que permite una separación clara entre la lógica de negocio y la infraestructura. Esto facilita la escalabilidad y el mantenimiento del código a largo plazo.
+
+Además de Next.js, se utilizan servicios de blur de imagen para mejorar la experiencia visual de la aplicación al cargar imágenes de manera progresiva. También se implementa un sistema de mapping de datos para transformar y adaptar la información obtenida de la API de Marvel a las necesidades específicas de la interfaz de usuario.
+
+La aplicación sigue una arquitectura de componentes, donde cada componente está diseñado para manejar una parte específica de la interfaz de usuario. Además, se emplea CSS para el diseño y estilo de la aplicación, permitiendo una apariencia atractiva y coherente en todos los dispositivos y navegadores.
+
+Se emplea React.Context para la gestión del estado global, según las necesidades específicas del proyecto y los requisitos de escalabilidad y rendimiento.
 
 ## Características Principales
 
@@ -47,22 +53,10 @@ La Aplicación Marvel está construida utilizando React.js como biblioteca de in
 4. Haz push de la rama (`git push origin feature/nueva-funcionalidad`).
 5. Crea un nuevo Pull Request.
 
-## Licencia
-
-[Información sobre la licencia del proyecto, si aplica]
-
-## Contacto
-
-Para más información, contacta al equipo de desarrollo en [correo electrónico de contacto].
-
-## Agradecimientos
-
-La Aplicación Marvel agradece a Marvel Developer Portal por proporcionar una API pública que permite acceder a información sobre los héroes de Marvel.
-
 ## Estado del Proyecto
 
 Actualmente en desarrollo.
 
 ## Soporte
 
-Para obtener soporte, por favor abre un issue en el repositorio del proyecto: [enlace al repositorio](https://github.com/tu-usuario/aplicacion-marvel/issues)
+Para obtener soporte, por favor abre un issue en el repositorio del proyecto: [enlace al repositorio](https://github.com/JoniAguero/zara-poc)
