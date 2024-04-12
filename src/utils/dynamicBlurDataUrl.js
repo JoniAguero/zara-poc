@@ -1,6 +1,5 @@
 // dynamicBlurDataUrl.js
-// const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : process.env.NEXT_PUBLIC_DOMAIN;
-const baseUrl = 'http://localhost:3000/';
+const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : process.env.NEXT_PUBLIC_DOMAIN;
 
 export const dynamicBlurDataUrl = async (url) => {
   const base64str = await fetch(`${baseUrl}/_next/image?url=${url}&w=16&q=75`).then(async (res) =>
