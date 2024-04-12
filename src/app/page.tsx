@@ -1,5 +1,5 @@
 import { HeroTemplate } from '@/components';
-import { getHeroListService } from '@/services';
+import { getHeroListService } from '@/domain/services';
 
 async function getData() {
   const { items, count } = await getHeroListService();

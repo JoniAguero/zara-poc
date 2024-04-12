@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './HeroTemplate.module.css';
-import React, { use, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDomain } from '@/context';
 import { HeroList, Loader, SearchInput } from '@/components';
@@ -26,12 +26,14 @@ export const HeroTemplate: React.FC<HeroListProps> = ({ heroes, count = 0, showS
   const { domain } = useDomain();
   const [heroItems, setHeroItems] = useState<any[]>(heroes);
   const [countItems, setCountItems] = useState<number>(count);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     setHeroItems(heroes);
   }, [heroes]);
 
   const fetchHeroItems = async ({ search = '' }: { search: string }) => {
+    setLoading(true);
     try {
       const { items, count } = await domain.getHeroListUseCase.execute({ search });
 
@@ -46,6 +48,8 @@ export const HeroTemplate: React.FC<HeroListProps> = ({ heroes, count = 0, showS
       setCountItems(count);
     } catch (error) {
       console.error('Error fetching hero items:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -61,13 +65,18 @@ export const HeroTemplate: React.FC<HeroListProps> = ({ heroes, count = 0, showS
           <div className={styles.results}>{countItems} RESULTS</div>
         </div>
       )}
-      {!heroItems || heroItems.length === 0 ? (
-        <div>
-          <Loader />
-        </div>
-      ) : (
-        <HeroList heroes={heroItems}></HeroList>
-      )}
+
+      <>
+        {loading ? (
+          <div className={styles.containerLoading}>
+            <Loader />
+          </div>
+        ) : !heroItems || heroItems.length === 0 ? (
+          <div>No heroes found</div>
+        ) : (
+          <HeroList heroes={heroItems}></HeroList>
+        )}
+      </>
     </div>
   );
 };

@@ -28,7 +28,15 @@ export const HeroCard: React.FC<HeroCardProps> = ({
 
   return (
     <div className={styles.container} onClick={handleClick}>
-      <Image src={image} alt={name} width={190} height={190} placeholder="blur" blurDataURL={blurImage} />
+      <Image
+        src={image}
+        alt={name}
+        width={190}
+        height={190}
+        placeholder="blur"
+        blurDataURL={blurImage}
+        loading="lazy"
+      />
       <div className={styles.separator}></div>
       <div className={styles.containerName}>
         <div className={styles.name}>{name}</div>

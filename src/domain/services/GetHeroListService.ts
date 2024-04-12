@@ -1,9 +1,8 @@
 import { HeroEntity } from '@/domain/hero/models/HeroEntity';
 import { dynamicBlurDataUrl } from '@/utils';
+import { DomainApp } from './domain';
 
 export const getHeroListService = async () => {
-  const DomainApp = require('@/domain').DomainApp.create();
-
   const { items: itemsResponse, count } = await DomainApp.getHeroListUseCase.execute({ search: '' });
 
   const items = await Promise.all(

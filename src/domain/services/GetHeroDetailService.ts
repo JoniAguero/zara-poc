@@ -1,9 +1,8 @@
 import { ComicEntity } from '@/domain/comic/models/ComicEntity';
 import { dynamicBlurDataUrl } from '@/utils';
+import { DomainApp } from './domain';
 
 export const getHeroDetailService = async ({ id }: { id: number }) => {
-  const DomainApp = require('@/domain').DomainApp.create();
-
   const heroResponse = await DomainApp.getHeroDetailUseCase.execute({ id });
   const comicsResponse = await DomainApp.getComicListUseCase.execute({ id });
 

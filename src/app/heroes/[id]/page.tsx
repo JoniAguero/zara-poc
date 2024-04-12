@@ -1,5 +1,5 @@
 import { DetailHeroTemplate } from '@/components';
-import { getHeroDetailService } from '@/services';
+import { getHeroDetailService } from '@/domain/services';
 
 async function getData({ id }: { id: number }) {
   const { hero, comics } = await getHeroDetailService({ id });

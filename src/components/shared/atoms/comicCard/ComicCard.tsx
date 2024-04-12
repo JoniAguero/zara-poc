@@ -13,7 +13,15 @@ interface ComicCardProps {
 export const ComicCard: React.FC<ComicCardProps> = ({ title, image, blurImage, year, handleClick }) => {
   return (
     <div className={styles.container} onClick={handleClick}>
-      <Image src={image} alt={title} width={180} height={270} placeholder="blur" blurDataURL={blurImage} />
+      <Image
+        src={image}
+        alt={title}
+        width={180}
+        height={270}
+        placeholder="blur"
+        blurDataURL={blurImage}
+        loading="lazy"
+      />
       <div className={styles.title}>{title}</div>
       <div className={styles.year}>{year}</div>
     </div>
